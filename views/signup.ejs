@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: rgb(0, 0, 33);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px 20px;
+            color: #e5e7eb;
+
+        }
+
+        h1 {
+            margin-bottom: 25px;
+            font-size: 2.4rem;
+        }
+
+        form {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 20px 25px;
+            border-radius: 12px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+
+        input {
+            width: 260px;
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 10px 16px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.25);
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Signup Page</h1>
+    <form action="/signup" method="POST">
+        <label>Full Name</label>
+        <input type="text" name="user_name" required><br><br>
+        <label>Email</label>
+        <input type="text" name="email" required><br><br>
+        <label>Password</label>
+        <input type="password" name="password" required><br><br>
+        <button type="submit">Signup</button>
+    </form>
+
+</body>
+
+</html>
