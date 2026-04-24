@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
@@ -6,14 +7,16 @@ const shortid = require("shortid");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
+
 const app = express();
-const PORT = 8002;
+const PORT = process.env.PORT;
 
 
-mongoose
-    .connect("mongodb://127.0.0.1:27017/url-shortener")
-    .then(() => console.log("MongoDB Connected"))
-    .catch((err) => console.log(err));
+// mongoose
+//     .connect("mongodb://127.0.0.1:27017/url-shortener")
+//     .then(() => console.log("MongoDB Connected"))
+//     .catch((err) => console.log(err));
+mongoose.connect(process.env.MONGO_URL);
 
 
 app.set("view engine", "ejs");
@@ -24,7 +27,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 
-const secret = "RajatYadav@$";
+// const secret = "RajatYadav@$";
+const secret = process.env.JWT_SECRET;
 
 
 function setUserSession(user) {
