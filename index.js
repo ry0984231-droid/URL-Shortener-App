@@ -7,16 +7,17 @@ const shortid = require("shortid");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 
-
-// mongoose
-//     .connect("mongodb://127.0.0.1:27017/url-shortener")
-//     .then(() => console.log("MongoDB Connected"))
-//     .catch((err) => console.log(err));
-mongoose.connect(process.env.MONGO_URL);
+mongoose.connect(process.env.MONGO_URL)
+    .then(() => {
+        console.log("MongoDB Connected");
+        app.listen(PORT, () => {
+            console.log(`Server started at port ${PORT}`);
+        });
+    })
+    .catch((err) => console.log("Mongo Error:", err));
 
 
 app.set("view engine", "ejs");
@@ -26,8 +27,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-
-// const secret = "RajatYadav@$";
 const secret = process.env.JWT_SECRET;
 
 
@@ -259,8 +258,3 @@ app.get("/:shortId", async (req, res) => {
 
     res.redirect(entry.redirecturl);
 });
-
-
-app.listen(PORT, () =>
-    console.log(`Server started at port ${PORT}`)
-);
