@@ -23,6 +23,5 @@ npm start
 PORT=8002
 MONGO_URL=your_mongodb_url
 JWT_SECRET=your_secret
-## Author
-Rajat Yadav
+
 
